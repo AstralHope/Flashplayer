@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Flashplayer</title>
+<script src="jquery.min.js"></script>
+</head>
+<body style="text-align:center">
+
+<!--<embed src="./高中化学《化学键元素周期律》原子核外电子运动素材（flash）.swf" />-->
+<!---->
+<!--<br/>-->
+<!--<br/>-->
+<input id="input-file" class="upload" type="file" value="">
+
+<div id="change"></div>
+<script type="text/javascript">
+    function getObjectURL(file) {
+        var url = null;
+        if(window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if(window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if(window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+<!--function upload() {-->
+<!--    var filename = document.getElementById("input-file").value;-->
+<!--    // 这时的filename不是 importFile 框中的值-->
+<!--    alert(filename);-->
+<!--}-->
+$(function(){
+  $('.upload').change(function(){
+                      var fileInput = document.getElementById('input-file');
+                      var file = fileInput.files[0];
+                      var filename = file.name;
+<!--                      var objUrl= getObjectURL($("#input-file")[0].files[0]);-->
+                      document.getElementById("change").innerHTML="<embed src='"+filename+"' />";
+                      })
+  })
+</script>
+</body>
+</html>
